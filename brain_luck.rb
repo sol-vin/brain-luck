@@ -19,17 +19,18 @@ def brain_luck(code, input)
         end
       end
     elsif code[current_instruction] == ?]
-      if instruction == ?] && data[pointer] != 0                #seek thorugh instructions if there is a [ or ]
-      bracket_count = 0                                         #counts how many open brackets we have yet to close
-      while current_instruction > 0                             #dont keep going if we go out of bounds
-        current_instruction -= 1                                #Move the current instruction forward by one
-        if code[current_instruction] == ?]                      #Is the current instructiuon an open bracket?
-          bracket_count += 1                                    #If so, count it, that's one more to close
-        elsif code[current_instruction] == ?[                   #Is the current instruction and close bracket
-          if bracket_count == 0                                 #Are there no other brackets that need closing?
-            break                                               #Get the fuck outta here
-          else                                                  #We still have an extra bracket to close?
-            bracket_count -= 1                                  #One less bracket to close
+      if  code[current_instruction] == ?] && data[pointer] != 0                #seek thorugh instructions if there is a [ or ]
+        bracket_count = 0                                         #counts how many open brackets we have yet to close
+        while current_instruction > 0                             #dont keep going if we go out of bounds
+          current_instruction -= 1                                #Move the current instruction forward by one
+          if code[current_instruction] == ?]                      #Is the current instructiuon an open bracket?
+            bracket_count += 1                                    #If so, count it, that's one more to close
+          elsif code[current_instruction] == ?[                   #Is the current instruction and close bracket
+            if bracket_count == 0                                 #Are there no other brackets that need closing?
+              break                                               #Get the fuck outta here
+            else                                                  #We still have an extra bracket to close?
+              bracket_count -= 1                                  #One less bracket to close
+            end
           end
         end
       end
